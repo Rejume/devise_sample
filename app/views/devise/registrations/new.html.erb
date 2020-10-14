@@ -1,17 +1,17 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages %>
-
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= full_error_message_on resource, :email  %>
   </div>
 
   <!-- ここから追加してください -->
   <div class="field">
     <%= f.label :name %> <br />
     <%= f.text_field :name %>
+    <%= full_error_message_on resource, :name %>
   </div>
   <!-- ここまで追加してください -->
 
@@ -21,11 +21,13 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= full_error_message_on resource, :password %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= full_error_message_on resource, :password_confirmation %>
   </div>
 
   <div class="actions">
